@@ -1,0 +1,21 @@
+name: recipes
+version: 0.1.0
+
+authors:
+  - cenius <cenius@cenius.ai>
+
+targets:
+  app:
+    main: src/app.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    version: ~> 1.11.0
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: ~> 0.23.0
+
+crystal: ">= 1.13.0"
+
+license: MIT
