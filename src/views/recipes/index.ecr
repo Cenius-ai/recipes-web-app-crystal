@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes — Browse All</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Left Rail Navigation -->
+    <aside class="sidebar">
+      <a href="/recipes" class="sidebar-brand">
+        <span class="brand-icon">&#9832;</span>
+        Recipes
+      </a>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="/recipes" class="active">
+            <span class="nav-icon">&#9776;</span> All Recipes
+          </a></li>
+          <li><a href="/recipes/new">
+            <span class="nav-icon">+</span> New Recipe
+          </a></li>
+        </ul>
+        <div class="sidebar-section-label">Categories</div>
+        <ul class="sidebar-nav">
+          <% categories = recipes.map(&.category).uniq.sort %>
+          <% categories.each do |cat| %>
+            <li><a href="/recipes">
+              <span class="nav-icon">&#9679;</span> <%= cat %>
+            </a></li>
+          <% end %>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>All Recipes</h1>
+          <p class="page-subtitle"><%= recipes.size %> recipe<%= recipes.size == 1 ? "" : "s" %> in your collection</p>
+        </div>
+        <a href="/recipes/new" class="btn btn-primary">+ New Recipe</a>
+      </div>
+
+      <% if recipes.empty? %>
+        <div class="empty-state">
+          <h3>No recipes yet</h3>
+          <p>Add your first recipe to get started.</p>
+          <a href="/recipes/new" class="btn btn-primary">Create Recipe</a>
+        </div>
+      <% else %>
+        <div class="recipe-grid">
+          <% recipes.each do |recipe| %>
+            <a href="/recipes/<%= recipe.id %>" class="card">
+              <div class="recipe-card-title"><%= recipe.name %></div>
+              <% if desc = recipe.description %>
+                <div class="recipe-card-desc"><%= desc %></div>
+              <% end %>
+              <div class="recipe-card-meta">
+                <span class="badge badge-category"><%= recipe.category %></span>
+                <span class="badge badge-difficulty <%= recipe.difficulty %>"><%= recipe.difficulty %></span>
+                <% if mins = recipe.prep_minutes %>
+                  <span class="badge-time">&#9202; <%= mins %>m prep</span>
+                <% end %>
+                <% if mins = recipe.cook_minutes %>
+                  <span class="badge-time">&#128293; <%= mins %>m cook</span>
+                <% end %>
+              </div>
+            </a>
+          <% end %>
+        </div>
+      <% end %>
+    </main>
+  </div>
+</body>
+</html>
