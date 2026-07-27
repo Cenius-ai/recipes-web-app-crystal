@@ -87,7 +87,7 @@ _Full guide: [`USAGE.md`](USAGE.md)_
 
 ## Architecture
 
-Crystal application, delivered as a complete, runnable project (254 files). Top-level layout: `bin/`, `db/`, `lib/`, `public/`, `spec/`, `src/`. `install.sh` provisions dependencies and seeds demo data, so the app boots with something to show. Setup details live in [`INSTALL.md`](INSTALL.md).
+Crystal application, delivered as a complete, runnable project (241 files). Top-level layout: `bin/`, `db/`, `lib/`, `public/`, `spec/`, `src/`. `install.sh` provisions dependencies and seeds demo data, so the app boots with something to show. Setup details live in [`INSTALL.md`](INSTALL.md).
 
 ## FAQ
 
